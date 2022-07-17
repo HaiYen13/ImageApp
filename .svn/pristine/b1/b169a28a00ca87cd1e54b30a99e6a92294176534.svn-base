@@ -1,0 +1,7 @@
+package com.example.myimageapp;
+
+import java.util.ArrayList;
+
+public interface LoadDataListener {
+    void onLoadDataFinished(ArrayList<MovieImageModel> arrayList);
+}

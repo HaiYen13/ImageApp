@@ -1,0 +1,68 @@
+package com.example.myimageapp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myimageapp.utils.MovieList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends Activity implements MovieAdapter.OnItemClickListener {
+    private TextView tvName;
+    private ImageView imgItem;
+    private RecyclerView rcvCatogory;
+    private MovieAdapter mMovieAdapter;
+
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initView();
+        initAction();
+        getData();
+    }
+
+    private void getData() {
+        ArrayList<MovieImageModel> movieList = new ArrayList<>();
+        Gson gson = new Gson();
+        String imageList = MovieList.loadJsonFromAssets(this);
+        List<MovieImageModel> movieImageModels;
+        movieImageModels = gson.fromJson(imageList, new TypeToken<List<MovieImageModel>>(){}
+                .getType());
+
+        if (movieImageModels != null && !movieImageModels.isEmpty()) {
+            for (int i = 0; i < movieImageModels.size(); i++) {
+                movieList.add(new MovieImageModel(movieImageModels.get(i).getId(), movieImageModels.get(i).getName(), movieImageModels.get(i).getUrl()));
+                Log.d("getUrl", movieImageModels.get(i).getUrl());
+            }
+        }
+        mMovieAdapter = new MovieAdapter(movieList, this, this);
+        rcvCatogory.setLayoutManager(new GridLayoutManager(this, 2));
+        rcvCatogory.setAdapter(mMovieAdapter);
+    }
+
+    private void initView(){
+        rcvCatogory = findViewById(R.id.gridview);
+
+    }
+    private void initAction(){
+    }
+
+    @Override
+    public void onClick(MovieImageModel model, int pos) {
+
+    }
+}

@@ -1,0 +1,59 @@
+package com.example.myimageapp.model;
+
+import java.io.Serializable;
+
+public class ImageModel implements Serializable {
+    private int id;
+    private String name;
+    private String url;
+    private int isFavorited;
+    private int isDownloaded;
+
+    public ImageModel(int id, String name, String url, int isFavorited, int isDownloaded) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+        this.isFavorited = isFavorited;
+        this.isDownloaded = isDownloaded;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getIsFavorited() {
+        return isFavorited;
+    }
+
+    public void setIsFavorited(int isFavorited) {
+        this.isFavorited = isFavorited;
+    }
+
+    public int getIsDownloaded() {
+        return isDownloaded;
+    }
+
+    public void setIsDownloaded(int isDownloaded) {
+        this.isDownloaded = isDownloaded;
+    }
+}

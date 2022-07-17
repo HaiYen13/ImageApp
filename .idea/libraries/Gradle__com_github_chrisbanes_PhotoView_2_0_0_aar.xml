@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.chrisbanes:PhotoView:2.0.0@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../kojimachi/gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../kojimachi/gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/res" />
+      <root url="file://$PROJECT_DIR$/../../kojimachi/gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e2ef4b1793f9e0eefedd7b6951eb3b34/PhotoView-2.0.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../kojimachi/gradle/caches/modules-2/files-2.1/com.github.chrisbanes/PhotoView/2.0.0/7f923e2498f19628e96cb00a59537244cca9bcf2/PhotoView-2.0.0-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.chrisbanes/PhotoView/2.0.0/7f923e2498f19628e96cb00a59537244cca9bcf2/PhotoView-2.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../kojimachi/gradle/caches/modules-2/files-2.1/com.github.chrisbanes/PhotoView/2.0.0/da9515513124074a1cab76dd7a8054fe3a70b285/PhotoView-2.0.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.chrisbanes/PhotoView/2.0.0/da9515513124074a1cab76dd7a8054fe3a70b285/PhotoView-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

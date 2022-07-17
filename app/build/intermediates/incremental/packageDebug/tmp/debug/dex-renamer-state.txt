@@ -1,0 +1,4 @@
+#Sun Jul 17 11:59:51 ICT 2022
+base.0=C\:\\Users\\ACER\\Desktop\\MyFirstApp\\MyFirstApp\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

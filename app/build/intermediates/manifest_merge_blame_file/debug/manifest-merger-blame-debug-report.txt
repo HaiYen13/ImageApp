@@ -1,0 +1,108 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.myimageapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="18"
+8-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:5:5-66
+11-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:6:5-78
+12-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:6:22-76
+13    <uses-permission
+13-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:7:5-107
+14        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+14-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:7:22-78
+15        android:maxSdkVersion="29" />
+15-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:7:79-105
+16    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+16-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:8:5-81
+16-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:8:22-79
+17    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+17-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:9:5-76
+17-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:9:22-74
+18
+19    <application
+19-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:10:5-39:19
+20        android:name="com.example.myimageapp.home.MyApplication"
+20-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:11:9-43
+21        android:allowBackup="true"
+21-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:12:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.6.0] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\ebfe245c0ce623db3d96bd9906ccb365\core-1.6.0\AndroidManifest.xml:24:18-86
+23        android:debuggable="true"
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:13:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:14:9-41
+26        android:requestLegacyExternalStorage="true"
+26-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:19:9-52
+27        android:roundIcon="@mipmap/ic_launcher_round"
+27-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:15:9-54
+28        android:supportsRtl="true"
+28-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:16:9-35
+29        android:testOnly="true"
+30        android:theme="@style/Theme.MyImageApp"
+30-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:17:9-48
+31        android:usesCleartextTraffic="true" >
+31-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:18:9-44
+32        <activity
+32-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:21:9-29:20
+33            android:name="com.example.myimageapp.main.MainActivity"
+33-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:22:13-46
+34            android:exported="true" >
+34-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:23:13-36
+35            <intent-filter>
+35-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:24:13-27:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:25:17-69
+36-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:25:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:26:17-77
+38-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:26:27-74
+39            </intent-filter>
+40        </activity>
+41        <activity android:name="com.example.myimageapp.detail.DetailActivity" />
+41-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:30:9-58
+41-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:30:19-56
+42
+43        <receiver android:name="com.example.myimageapp.Broadcast" >
+43-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:31:9-35:20
+43-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:31:19-44
+44            <intent-filter>
+44-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:32:13-34:29
+45                <action android:name="download.Broadcast" />
+45-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:33:17-60
+45-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:33:25-58
+46            </intent-filter>
+47        </receiver>
+48
+49        <service
+49-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:36:9-37:39
+50            android:name="com.example.myimageapp.DownloadService"
+50-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:36:18-49
+51            android:exported="false" />
+51-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:37:13-37
+52        <service android:name="com.example.myimageapp.DownImageService" />
+52-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:38:9-52
+52-->C:\Users\ACER\Desktop\MyFirstApp\MyFirstApp\app\src\main\AndroidManifest.xml:38:18-50
+53
+54        <provider
+54-->[com.squareup.picasso:picasso:2.8] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\51282b1cc348f55cbf5d671fd736e385\picasso-2.8\AndroidManifest.xml:8:9-11:40
+55            android:name="com.squareup.picasso.PicassoProvider"
+55-->[com.squareup.picasso:picasso:2.8] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\51282b1cc348f55cbf5d671fd736e385\picasso-2.8\AndroidManifest.xml:9:13-64
+56            android:authorities="com.example.myimageapp.com.squareup.picasso"
+56-->[com.squareup.picasso:picasso:2.8] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\51282b1cc348f55cbf5d671fd736e385\picasso-2.8\AndroidManifest.xml:10:13-72
+57            android:exported="false" />
+57-->[com.squareup.picasso:picasso:2.8] C:\Users\ACER\.gradle\caches\transforms-2\files-2.1\51282b1cc348f55cbf5d671fd736e385\picasso-2.8\AndroidManifest.xml:11:13-37
+58    </application>
+59
+60</manifest>

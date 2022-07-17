@@ -1,0 +1,57 @@
+package com.example.myimageapp.detail;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.myimageapp.model.ImageModel;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public class ViewPagerAdapter extends PagerAdapter{
+    private Context mContext;
+
+    ArrayList<ImageModel> list;
+    int pos=0;
+
+    public ViewPagerAdapter(Context mContext, ArrayList<ImageModel> list) {
+        this.mContext = mContext;
+        this.list = list;
+    }
+
+
+    @Override
+    public int getCount() {
+        return list!=null? list.size() : 0;
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull @NotNull View view, @NonNull @NotNull Object object) {
+        return view==object;
+    }
+
+    @Override
+    public void destroyItem(@NonNull @NotNull ViewGroup container, int position, @NonNull @NotNull Object object) {
+        container.removeView((View) object);
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public Object instantiateItem(@NonNull @NotNull ViewGroup container, int position) {
+        PhotoView imageView = new PhotoView(mContext);
+        Picasso.get()
+                .load(list.get(position).getUrl())
+                .into(imageView);
+        container.addView(imageView);
+
+        return imageView;
+    }
+}

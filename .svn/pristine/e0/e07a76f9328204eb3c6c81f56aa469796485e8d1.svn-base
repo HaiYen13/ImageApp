@@ -1,0 +1,4 @@
+package com.example.myimageapp.utils;
+
+public class SQLiteExample {
+}

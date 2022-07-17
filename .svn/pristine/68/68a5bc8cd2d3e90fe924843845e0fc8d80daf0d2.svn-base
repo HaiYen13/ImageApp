@@ -1,0 +1,63 @@
+package com.example.myimageapp;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class MainActivity extends Activity implements MovieAdapter.OnItemClickListener {
+    private TextView tvName;
+    private ImageView imgItem;
+    private RecyclerView rcvCatogory;
+    private MovieAdapter mMovieAdapter;
+    private ArrayList<MovieImageModel> movieList = new ArrayList<>();
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+        initAction();
+        getData();
+    }
+
+    private void getData() {
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        movieList.add(new MovieImageModel(1, "Sona 2", "url"));
+        mMovieAdapter = new MovieAdapter(movieList, this, this);
+        rcvCatogory.setLayoutManager(new GridLayoutManager(this, 2));
+        rcvCatogory.setAdapter(mMovieAdapter);
+
+
+        rcvCatogory.setAdapter(mMovieAdapter);
+    }
+
+    private void initView(){
+        rcvCatogory = findViewById(R.id.gridview);
+
+    }
+    private void initAction(){
+    }
+
+    @Override
+    public void onClick(MovieImageModel model, int pos) {
+
+    }
+}

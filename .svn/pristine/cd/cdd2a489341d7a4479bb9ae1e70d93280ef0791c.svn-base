@@ -1,0 +1,101 @@
+package com.example.myimageapp;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+    private ArrayList<MovieImageModel> dataList;
+    private Context context;
+    private MovieAdapter.OnItemClickListener listener;
+    private int width;
+    private int height;
+
+    public interface OnItemClickListener {
+        void onClick(MovieImageModel model, int pos);
+    }
+
+    public MovieAdapter(ArrayList<MovieImageModel> dataList, Context context,
+                        OnItemClickListener listener) {
+        this.dataList = dataList;
+        this.context = context;
+        this.listener = listener;
+        height = context.getResources().getDisplayMetrics().heightPixels/3;
+        width = context.getResources().getDisplayMetrics().widthPixels/2;
+    }
+
+    public void onUpdateData(ArrayList<MovieImageModel> newList){
+        if(newList!=null&&!newList.isEmpty()){
+            if(dataList == null){
+                dataList = newList;
+                notifyDataSetChanged();
+            }else {
+                int startPos = dataList.size();
+                dataList.addAll(newList);
+                notifyItemRangeInserted(startPos, newList.size());
+            }
+        }
+    }
+
+    @NotNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.movie_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+        MovieImageModel model = dataList.get(position);
+        Glide.with(context)
+                .load(model.getUrl()+"")
+//                .override(180,300)
+//                .centerCrop()
+                .into(holder.imgItem)
+        ;
+
+        holder.tvName.setText(model.getName()+"");
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(model, position);
+                
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imgItem;
+        private TextView tvName;
+        public ViewHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+            imgItem = itemView.findViewById(R.id.img_item);
+            tvName = itemView.findViewById(R.id.tv_name);
+            imgItem.getLayoutParams().height = height;
+
+        }
+    }
+
+
+}

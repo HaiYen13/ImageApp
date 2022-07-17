@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/image_item"
+
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="3dp"
+    android:layout_gravity="center"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image2"/>
+        <TextView
+            android:id="@+id/tv_name"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sonic 2"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

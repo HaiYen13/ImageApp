@@ -1,0 +1,111 @@
+package com.example.myimageapp.main;
+
+import android.app.Activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
+import android.widget.Button;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myimageapp.LoadDataListener;
+import com.example.myimageapp.MyAsyntask;
+import com.example.myimageapp.R;
+import com.example.myimageapp.detail.DetailActivity;
+import com.example.myimageapp.detail.ViewPagerAdapter;
+import com.example.myimageapp.model.MovieImageModel;
+import com.example.myimageapp.utils.DebugHelper;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public class MainActivity extends Activity implements MovieAdapter.OnItemClickListener {
+    private RecyclerView rcvCatogory;
+    private MovieAdapter mMovieAdapter;
+    private boolean isLoadingData;
+    int currentPage = 0;
+    String[] arrDataName = {
+            "data1.json",
+            "data2.json",
+            "data3.json",
+    };
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+        new MyAsyntask(this, new LoadDataListener() {
+            @Override
+            public void onLoadDataFinished(ArrayList<MovieImageModel> arrayList) {
+                initAdapter(arrayList);
+            }
+        }).execute(arrDataName[currentPage]);
+
+        initAction();
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        int pos = data.getIntExtra("current_position", 0);
+        rcvCatogory.smoothScrollToPosition(pos);
+    }
+    private void initAdapter(ArrayList<MovieImageModel> arrayList) {
+        mMovieAdapter = new MovieAdapter(arrayList, MainActivity.this, MainActivity.this);
+        rcvCatogory.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+        rcvCatogory.setAdapter(mMovieAdapter);
+    }
+    private void initView(){
+        rcvCatogory = findViewById(R.id.rcvGrid);
+        rcvCatogory.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull @NotNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                Log.e("rcvCatogory.onScrollStateChanged", "newState:"+newState);
+                if(!isLoadingData && newState == RecyclerView.SCROLL_STATE_IDLE
+                        && currentPage < arrDataName.length - 1){
+                    int lastPos = ((GridLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+                    if(lastPos == mMovieAdapter.getItemCount() - 1){
+                        isLoadingData = true;
+                        loadMore();
+                    }
+                }
+            }
+
+            @Override
+            public void onScrolled(@NonNull @NotNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+//                DebugHelper.logDebug("rcvCatogory.onScrolled", "dx:"+dx +" - dy:"+dy);
+            }
+        });
+    }
+    private void loadMore(){
+        currentPage++;
+        new MyAsyntask(this, new LoadDataListener() {
+            @Override
+            public void onLoadDataFinished(ArrayList<MovieImageModel> arrayList) {
+                mMovieAdapter.onUpdateData(arrayList);
+                isLoadingData = false;
+            }
+        }).execute(arrDataName[currentPage]);
+        DebugHelper.logDebug("currentPage", "currentPage" + currentPage );
+
+    }
+    private void initAction() {
+    }
+    @Override
+    public void onClick(MovieImageModel model, int pos) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("myList", mMovieAdapter.getDataList());
+        intent.putExtra("position", pos);
+        startActivityForResult(intent, 123);
+
+    }
+}

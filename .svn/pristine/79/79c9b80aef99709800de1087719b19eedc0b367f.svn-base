@@ -1,0 +1,66 @@
+package com.example.myimageapp;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.view.View;
+import android.widget.Toast;
+
+import com.example.myimageapp.main.MainActivity;
+import com.example.myimageapp.model.MovieImageModel;
+import com.example.myimageapp.utils.DebugHelper;
+import com.example.myimageapp.utils.MovieList;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MyAsyntask extends AsyncTask<String, Void, ArrayList<MovieImageModel>> {
+
+    Activity contextParent;
+    LoadDataListener listener;
+
+    public MyAsyntask(MainActivity contextParent, LoadDataListener listener) {
+        this.contextParent = contextParent;
+        this.listener = listener;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Toast.makeText(contextParent, "Start" , Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected ArrayList<MovieImageModel> doInBackground(String... filesName) {
+        ArrayList<MovieImageModel> movieList = new ArrayList<>();
+        Gson gson = new Gson();
+        for(int i = 0; i< filesName.length;i++) {
+            DebugHelper.logDebug("MyAsyntask", "doInBackground:" + filesName[i]);
+            String imageList = MovieList.loadJsonFromAssets(contextParent, filesName[i]);
+            ArrayList<MovieImageModel> list = gson.fromJson(imageList, new TypeToken<List<MovieImageModel>>() {
+            }
+                    .getType());
+            if(list!=null&&!list.isEmpty())
+                movieList.addAll(list);
+            
+        }
+//
+//        if (movieImageModels != null && !movieImageModels.isEmpty()) {
+//            for (int i = 0; i < movieImageModels.size(); i++) {
+//                movieList.add(new MovieImageModel(movieImageModels.get(i).getId(), movieImageModels.get(i).getName(), movieImageModels.get(i).getUrl()));
+//                Log.d("getUrl", movieImageModels.get(i).getUrl());
+//            }
+//        }
+
+        return movieList;
+    }
+
+    @Override
+    protected void onPostExecute(ArrayList<MovieImageModel> movieImageModels) {
+        listener.onLoadDataFinished(movieImageModels);
+        contextParent.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+
+    }
+
+}
